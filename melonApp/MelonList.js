@@ -1,0 +1,45 @@
+import React from 'react'; 
+import MelonItem from './MelonItem';
+import './MelonList.css'
+
+const MelonList = ({filterData, onLike, clicked} ) => {
+    return (
+        <div className="MelonList">
+           <table>
+               <caption>Melon Chart</caption>
+               <colgroup>
+                <col className="w1"/>
+                <col className="w2"/>
+                <col className="w3"/>
+                <col className="w4"/>
+                <col className="w5"/>
+                <col className="w6"/>
+               </colgroup>
+               <thead>
+                   <tr>
+                       <th>순위</th>
+                       <th>곡정보</th>
+                       <th>앨범</th>
+                       <th>좋아요</th>
+                       <th>무비</th>
+                       <th>상승/하락</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   {
+                       filterData.map(item=>
+                        <MelonItem 
+                            key={item.rank}
+                            item={item}
+                            onLike={onLike}
+                            clicked={clicked}
+                        />
+                        )
+                   }
+               </tbody>
+           </table>
+        </div>
+    );
+};
+
+export default MelonList;
